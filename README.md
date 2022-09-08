@@ -56,7 +56,31 @@ if __name__ == '__main__':
     main()
 ```
 
+Now, we will add the functionality to close this game window. We will use the `events`in pygame and get the even when user clicks the close button. 
 
+```python
+for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+```
+
+Also, this `run=False` only stops the `while` loop, to close the actual window we need to add the following outside of the `while` loop
+
+```python
+pygame.quit()
+```
+
+This game window is running continuously and refreshes indefinitely becasue of `while` loop, and the rate of refreshing the screen is not defined at the moment so it refreshes as fast as your PC can run this while loop and it will be variable for different users depending on the processing power of their PC. To set this screen to refresh every 60 second we can use the `time` class from pygame
+
+```python
+FPS = 60
+
+clock = pygame.time.Clock()
+
+clock.tick(FPS)
+
+```
+We define this in particular order `FPS` will go on top with other variables, `clock` is set first in `main` class and then `tick` method is called under `while` loop.
 
 
 
